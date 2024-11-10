@@ -17,9 +17,16 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8000/register", formData);
-      console.log(response.data.message)
+      const response = await axios.post("http://192.168.29.23:8000/register", formData);
       setMessage(response.data.message);
+
+      /*if want to clear the fields of form we can use this code
+
+      setFormData({
+        username: "",
+        email: "",
+        password: "",
+        })*/
     } catch (error) {
       setMessage(error.response?.data?.message || "Registration failed");
     }
@@ -76,7 +83,7 @@ const Register = () => {
             />
 
             <div className="flex items-start justify-center mt-[3vh]"> 
-              <button className="bg-blue-600 text-white font-semibold py-2 px-5 rounded-lg shadow-md transition duration-300 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50  w-1/2">
+              <button type="submit" className="bg-blue-600 text-white font-semibold py-2 px-5 rounded-lg shadow-md transition duration-300 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50  w-1/2">
                 Register
               </button>
             </div>
